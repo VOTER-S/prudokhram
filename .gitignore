@@ -1,48 +1,27 @@
-# .gitignore для Django проекта (скопируй целиком в файл .gitignore)
-
 # Python
-__pycache__/
 *.py[cod]
 *$py.class
 *.so
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 .Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
 
-# Virtual environments
+# Django
+*.log
+db.sqlite3
+db.sqlite3-journal
+/media
+/staticfiles
+local_settings.py
+
+# Virtual Environment
+myenv/
 venv/
 env/
 ENV/
-env.bak/
-venv.bak/
-
-# Django
-db.sqlite3
-media/
-staticfiles/
-
-# Django secrets
-.env
-*.env
-.env.local
-.env.*.local
-
-# Logs
-*.log
-logs/
+.venv
 
 # IDE
 .vscode/
@@ -50,26 +29,33 @@ logs/
 *.swp
 *.swo
 *~
+*.sublime-project
+*.sublime-workspace
 
 # OS
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
+*.bak
 
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
+# Environment variables
+.env
+.env.local
+.env.production
 
-# Coverage
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+*.egg
+
+# Testing
 .coverage
-coverage.xml
 htmlcov/
+.pytest_cache/
 
-# Translations
-*.mo
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Backup files
+*~
+*.backup

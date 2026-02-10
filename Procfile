@@ -1,1 +1,1 @@
-web: gunicorn prudok.prudok.wsgi
+web: cd prudok && gunicorn prudok.wsgi --log-file -
