@@ -13,3 +13,7 @@ python manage.py collectstatic --no-input
 
 # Run migrations
 python manage.py migrate
+
+# Create superuser automatically (only if doesn't exist)
+# Username: admin, Password: from DJANGO_SUPERUSER_PASSWORD env var
+python manage.py create_superuser_if_none
