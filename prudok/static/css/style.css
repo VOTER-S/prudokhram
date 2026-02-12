@@ -248,30 +248,23 @@ img {
   max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
-  padding: 40px;
+  padding: 45px;
   box-sizing: border-box;
   background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.95) 0%, 
-    rgba(255, 255, 255, 0.9) 100%);
-  box-shadow: 0 8px 32px rgba(0, 51, 102, 0.12),
-              0 2px 8px rgba(0, 51, 102, 0.08);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(170, 217, 248, 0.3);
+    rgba(255, 255, 255, 0.98) 0%, 
+    rgba(248, 252, 255, 0.96) 100%) !important;
+  background-image: none !important;
+  box-shadow: 0 10px 40px rgba(0, 51, 102, 0.1),
+              0 4px 12px rgba(74, 144, 226, 0.08);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 2px solid rgba(74, 144, 226, 0.15);
 }
 
-.container::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: url("../images/reve-image (14).jpeg");
-  background-size: 292px;
-  background-position: center;
-  opacity: 0.08;
-  z-index: 0;
-  border-radius: 40px;
-  pointer-events: none;
+.container::before,
+.container::after {
+  display: none !important;
+  content: none !important;
 }
 
 .text {
@@ -279,27 +272,29 @@ img {
   margin-right: 20px;
   position: relative;
   z-index: 2;
-  color: #002244;
-  font-size: 28px;
-  line-height: 1.6;
+  color: #1a2d3d;
+  font-size: 26px;
+  line-height: 1.7;
   font-weight: 500;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 .ikona {
-  margin-right: 40px;
-  height: 142px;
-  width: 253px;
-  position: relative; /* Чтобы текст был поверх фона */
+  margin-right: 20px;
+  height: 160px;
+  width: 260px;
+  position: relative;
   z-index: 2;
 }
 
 .ikona img {
   height: 100%;
   width: 100%;
-  border-radius: 40px;
+  border-radius: 25px;
   -o-object-fit: cover;
      object-fit: cover;
+  box-shadow: 0 8px 25px rgba(0, 51, 102, 0.15),
+              0 3px 10px rgba(74, 144, 226, 0.12);
+  border: 2px solid rgba(74, 144, 226, 0.15);
 }
 
 .news_title {
@@ -463,15 +458,19 @@ img {
   min-height: 800px;
   height: auto;
   background: linear-gradient(135deg, 
-    rgba(227, 242, 253, 0.4) 0%, 
-    rgba(187, 222, 251, 0.4) 100%);
-  background-image: url("../images/reve-image (14).jpeg");
-  background-size: 292px;
-  background-blend-mode: overlay;
+    rgba(240, 248, 255, 0.95) 0%, 
+    rgba(227, 242, 253, 0.9) 100%) !important;
+  background-image: none !important;
   position: relative;
   box-sizing: border-box;
   gap: 50px;
   flex-wrap: wrap;
+}
+
+.container2::before,
+.container2::after {
+  display: none !important;
+  content: none !important;
 }
 
 .poshertvovie_card {
