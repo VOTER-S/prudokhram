@@ -5,9 +5,20 @@
   font-weight: 600; /* SemiBold обычно соответствует 600 */
   font-style: italic;
 }
+* {
+  box-sizing: border-box;
+}
+
 body {
   padding: 0;
   margin: 0;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 #preloader {
@@ -42,8 +53,10 @@ body {
   background-image: url("/static/img/IMG_1266.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center center;
   height: 800px;
   position: relative; /* чтобы крест можно было позиционировать */
+  min-height: 600px;
 }
 
 .church-title {
@@ -115,27 +128,56 @@ body {
   justify-content: center;
   font-size: 17px;
   font-family: "Segoe UI", sans-serif;
-  background-color: #B7E3FF;
-  color: #003366;
+  background: linear-gradient(135deg, #8B2635 0%, #A73548 50%, #C45563 100%);
+  color: #FFFFFF;
   height: 60px;
   width: 240px;
-  border: none;
+  border: 2px solid rgba(218, 165, 32, 0.3);
   border-radius: 35px;
-  font-weight: 500;
+  font-weight: 600;
   text-align: center;
   text-decoration: none;
   line-height: 1;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease, color 0.2s ease;
+  box-shadow: 0 6px 20px rgba(139, 38, 53, 0.35), 
+              0 2px 8px rgba(218, 165, 32, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
+
+.menu-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(218, 165, 32, 0.4) 0%, rgba(255, 215, 0, 0.3) 100%);
+  transition: left 0.4s ease;
+}
+
+.menu-btn:hover::before {
+  left: 0;
+}
+
 .menu-btn:hover {
-  background-color: #056cd2;
-  transform: translateY(-2px) scale(1.02);
-  color: #fff;
+  background: linear-gradient(135deg, #A73548 0%, #C45563 50%, #D67082 100%);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 25px rgba(139, 38, 53, 0.45), 
+              0 4px 12px rgba(218, 165, 32, 0.35),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-color: rgba(218, 165, 32, 0.6);
 }
+
+.menu-btn:active {
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 4px 12px rgba(139, 38, 53, 0.35);
+}
+
 .menu-btn:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(170, 217, 248, 0.7);
+  box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.5),
+              0 6px 20px rgba(139, 38, 53, 0.35);
 }
 
 .hram {
@@ -151,17 +193,20 @@ body {
           backdrop-filter: blur(4px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   width: 1000px;
+  max-width: 95%;
   margin-left: auto;
   margin-right: auto;
   animation: fadeIn 1s ease-in-out;
 }
 
 .hram img {
-  width: 90%;
+  width: 100%;
+  max-width: 100%;
   height: auto;
   border-radius: 30px;
   -o-object-fit: cover;
      object-fit: cover;
+  display: block;
 }
 
 @keyframes fadeIn {
@@ -180,11 +225,15 @@ body {
   justify-content: space-between;
   align-items: center;
   position: relative; /* Для псевдоэлемента */
-  height: 264px;
+  min-height: 264px;
+  height: auto;
   border-radius: 40px;
   width: 95%; /* Установка ширины контейнера */
+  max-width: 1400px;
   margin-left: auto; /* Центрирование */
   margin-right: auto;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .container::before {
@@ -304,6 +353,7 @@ body {
 
 .card {
   width: 430px; /* Ширина карточки */
+  max-width: 100%;
   border-radius: 30px; /* Закругленные углы */
   overflow: hidden; /* Обрезка содержимого за границами */
   box-shadow: 0 4px 6px rgba(0, 14, 92, 0.758); /* Тень для объёма */
@@ -313,6 +363,7 @@ body {
 
 .card img {
   width: 100%;
+  max-width: 100%;
   display: block;
   -o-object-fit: cover;
      object-fit: cover;
@@ -355,7 +406,8 @@ body {
   align-items: center; /* Выравнивание карточек по вертикали */
   width: 100%; /* Ширина контейнера */
   padding: 123px; /* Отступ внутри контейнера */
-  height: 964px;
+  min-height: 964px;
+  height: auto;
   background-image: url("../images/reve-image (14).jpeg"); /* Ваше изображение */
   background-size: 292px; /* Синий фон контейнера с прозрачностью */
   position: relative;
@@ -366,7 +418,9 @@ body {
   position: relative;
   z-index: 2; /* Поверх фона */
   width: 430px;
-  height: 700px; /* Фиксированная ширина карточек */
+  max-width: 100%;
+  min-height: 700px;
+  height: auto; /* Фиксированная ширина карточек */
   padding: 5px; /* Отступы внутри карточки */
   border-radius: 10px;
   background-color: #B7E3FF; /* Полупрозрачный белый фон */
@@ -619,134 +673,432 @@ footer {
 }
 
 /* ===============================
-   АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ < 768px
+   АДАПТАЦИЯ ДЛЯ ОЧЕНЬ МАЛЕНЬКИХ ТЕЛЕФОНОВ < 480px
    =============================== */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   body {
     overflow-x: hidden;
   }
+  
   /* HEADER */
   .church-header {
     height: auto;
-    padding: 20px 10px;
+    padding: 15px 10px;
     background-position: center;
+    min-height: 500px;
   }
+  
   .church-title {
-    flex-direction: column;
+    font-size: 20px !important;
+    margin-bottom: 30px;
+    padding: 0 10px;
+    line-height: 1.5;
+  }
+  
+  .krest {
+    position: static !important;
     text-align: center;
-    font-size: 32px !important;
-    margin-bottom: 40px;
+    margin-top: 15px;
   }
+  
   .krest img {
-    margin-left: 0 !important;
-    max-height: 70px !important;
+    max-height: 60px !important;
+    width: auto;
   }
+  
+  /* MENU BUTTONS */
+  .menu {
+    margin-top: 15px;
+  }
+  
   .menu-buttons {
     display: flex;
-    justify-content: center; /* Центровка по горизонтали */
-    align-items: center; /* Центровка по вертикали (если несколько строк) */
-    flex-direction: column; /* Кнопки в колонку */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     gap: 12px;
-    background: none !important;
-    padding: 0 !important;
-    box-shadow: none !important;
-    -webkit-backdrop-filter: none !important;
-            backdrop-filter: none !important;
+    padding: 0 15px !important;
   }
+  
   .menu-btn {
-    background: rgba(255, 255, 255, 0.18) !important;
-    -webkit-backdrop-filter: blur(2px);
-            backdrop-filter: blur(2px);
-    border: 1px solid rgba(255, 255, 255, 0.35);
+    width: 100% !important;
+    max-width: 300px;
+    height: 55px !important;
+    font-size: 15px !important;
+    background: linear-gradient(135deg, #8B2635 0%, #A73548 50%, #C45563 100%) !important;
+    border: 2px solid rgba(218, 165, 32, 0.3) !important;
   }
-  /* ВЕРХНИЙ БЛОК */
+  
+  /* CONTAINER */
   .container {
     flex-direction: column !important;
     height: auto !important;
-    padding: 20px 0;
-    margin-top: 40px !important;
+    padding: 20px 10px !important;
+    margin-top: 30px !important;
+    width: 95% !important;
   }
+  
   .text {
-    margin: 0 !important;
-    font-size: 22px !important;
+    margin: 15px 10px !important;
+    font-size: 18px !important;
     text-align: center;
+    line-height: 1.6;
   }
+  
   .ikona {
-    width: 80% !important;
+    width: 90% !important;
     height: auto !important;
-    margin: 20px 0 0 0 !important;
+    margin: 20px auto !important;
   }
-  /* ХРАМ */
+  
+  /* HRAM */
   .hram {
     width: 95% !important;
-    padding: 20px;
+    padding: 15px !important;
+    margin-top: 40px !important;
+    border-width: 2px !important;
   }
-  /* НОВОСТИ */
-  .news {
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-  }
-  .card {
-    width: 90% !important;
-  }
-  /* ПОЖЕРТВОВАНИЯ */
-  .container2 {
-    flex-direction: column;
-    height: auto;
-    padding: 30px 20px;
-    gap: 30px;
-  }
-  .poshertvovie_card {
-    width: 95% !important;
-    height: auto !important;
-  }
-  .card-description {
-    font-size: 18px !important;
-    line-height: 26px !important;
-  }
-  .donate-btn {
-    width: 90%;
-    padding: 15px;
-  }
-  /* ССЫЛКИ */
-  .link-container {
-    flex-direction: column;
-    gap: 20px;
-  }
-  .btn {
-    width: 100%;
-    padding: 15px;
-    text-align: center;
-  }
-  /* АВАТАР */
-  .avatar {
-    flex-direction: column;
-    height: auto;
-    gap: 20px;
-    text-align: center;
-  }
-  .avatar img {
-    height: 150px !important;
-  }
-  .avatar p {
-    font-size: 24px !important;
-  }
-  /* FOOTER */
-  footer {
-    flex-direction: column;
-    gap: 40px;
-    text-align: center;
-  }
-  .footer-column {
+  
+  .hram img {
     width: 100% !important;
   }
-  .schedule-list li {
+  
+  /* TITLES */
+  .poshertvovie {
+    font-size: 35px !important;
+    padding: 0 15px;
+    top: 50px !important;
+  }
+  
+  .raspisanie_title {
+    font-size: 28px !important;
+    padding: 0 15px;
+    top: 150px !important;
+  }
+  
+  .link {
+    font-size: 28px !important;
+    margin-top: 250px !important;
+    padding: 0 15px;
+  }
+  
+  /* CARDS */
+  .card {
+    width: 95% !important;
+    margin: 0 auto;
+  }
+  
+  .card img {
+    height: 200px !important;
+  }
+  
+  .card-title {
+    font-size: 22px !important;
+  }
+  
+  .card-description {
+    font-size: 16px !important;
+    line-height: 24px !important;
+  }
+  
+  /* POSHERTVOVIE */
+  .container2 {
+    flex-direction: column !important;
+    height: auto !important;
+    padding: 30px 15px !important;
+    gap: 25px !important;
+    top: 80px !important;
+  }
+  
+  .poshertvovie_card {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  
+  .img-title img {
+    width: 140px !important;
+    height: 140px !important;
+  }
+  
+  .donate-btn {
+    width: 90%;
+    padding: 12px 20px !important;
+    font-size: 15px !important;
+  }
+  
+  /* LINKS */
+  .link-container {
+    flex-direction: column !important;
+    gap: 15px !important;
+    padding: 10px !important;
+  }
+  
+  .btn {
+    width: 100% !important;
+    padding: 12px 20px !important;
+    font-size: 15px !important;
+  }
+  
+  /* AVATAR */
+  .avatar {
+    flex-direction: column !important;
+    height: auto !important;
+    gap: 15px !important;
+    padding: 20px 15px !important;
+    top: 150px !important;
+  }
+  
+  .avatar img {
+    height: 120px !important;
+    width: 120px !important;
+  }
+  
+  .avatar p {
     font-size: 20px !important;
   }
-  /* SLIDERS */
+  
+  /* FOOTER */
+  .title_fot {
+    flex-direction: column !important;
+    align-items: center;
+    gap: 20px !important;
+    font-size: 24px !important;
+    padding: 0 15px;
+    text-align: center;
+  }
+  
+  .title_fot img {
+    width: 50px !important;
+  }
+  
+  footer {
+    flex-direction: column !important;
+    gap: 30px !important;
+    text-align: center;
+    padding: 20px 15px !important;
+  }
+  
+  .footer-column h4 {
+    font-size: 22px !important;
+  }
+  
+  .footer-column p {
+    font-size: 16px !important;
+  }
+  
+  .footer-column ul li a {
+    font-size: 16px !important;
+  }
+  
+  /* SLIDER */
+  .slider2 {
+    height: auto !important;
+    min-height: 350px !important;
+  }
+  
+  .slider-container2 {
+    padding: 0 10px;
+  }
+  
+  /* RASPISANIE IMAGE */
+  .raspisanie img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 280px;
+  }
+}
+
+/* ===============================
+   АДАПТАЦИЯ ДЛЯ СРЕДНИХ ТЕЛЕФОНОВ 481px - 768px
+   =============================== */
+@media (min-width: 481px) and (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* HEADER */
+  .church-header {
+    height: auto;
+    padding: 20px 15px;
+    background-position: center;
+  }
+  
+  .church-title {
+    font-size: 28px !important;
+    margin-bottom: 40px;
+    line-height: 1.5;
+  }
+  
+  .krest img {
+    max-height: 80px !important;
+  }
+  
+  /* MENU */
+  .menu-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px !important;
+  }
+  
+  .menu-btn {
+    width: 85% !important;
+    max-width: 350px;
+    height: 58px !important;
+    font-size: 16px !important;
+  }
+  
+  /* CONTAINER */
+  .container {
+    flex-direction: column !important;
+    height: auto !important;
+    padding: 25px 15px;
+    margin-top: 50px !important;
+    width: 92% !important;
+  }
+  
+  .text {
+    margin: 15px !important;
+    font-size: 24px !important;
+    text-align: center;
+  }
+  
+  .ikona {
+    width: 70% !important;
+    height: auto !important;
+    margin: 20px auto !important;
+  }
+  
+  /* HRAM */
+  .hram {
+    width: 92% !important;
+    padding: 25px;
+  }
+  
+  /* TITLES */
+  .poshertvovie {
+    font-size: 45px !important;
+    top: 60px !important;
+  }
+  
+  .raspisanie_title {
+    font-size: 35px !important;
+    top: 200px !important;
+  }
+  
+  /* CARDS */
+  .news {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 35px !important;
+  }
+  
+  .card {
+    width: 85% !important;
+    max-width: 450px;
+  }
+  
+  /* POSHERTVOVIE */
+  .container2 {
+    flex-direction: column !important;
+    height: auto !important;
+    padding: 40px 20px !important;
+    gap: 35px !important;
+  }
+  
+  .poshertvovie_card {
+    width: 90% !important;
+    max-width: 450px;
+    height: auto !important;
+  }
+  
+  .card-description {
+    font-size: 20px !important;
+    line-height: 28px !important;
+  }
+  
+  /* LINKS */
+  .link-container {
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+  
+  .btn {
+    width: 90% !important;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 14px !important;
+  }
+  
+  /* AVATAR */
+  .avatar {
+    flex-direction: column !important;
+    height: auto !important;
+    gap: 20px !important;
+    padding: 25px !important;
+  }
+  
+  .avatar img {
+    height: 160px !important;
+    width: 160px !important;
+  }
+  
+  .avatar p {
+    font-size: 26px !important;
+  }
+  
+  /* FOOTER */
+  footer {
+    flex-direction: column !important;
+    gap: 35px !important;
+    text-align: center;
+  }
+  
   .slider2 {
     min-height: 400px;
     height: auto;
+  }
+}
+
+/* ===============================
+   АДАПТАЦИЯ ДЛЯ БОЛЬШИХ ТЕЛЕФОНОВ И ПЛАНШЕТОВ 769px - 1024px
+   =============================== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .church-title {
+    font-size: 35px;
+  }
+  
+  .menu-buttons {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .menu-btn {
+    width: 220px;
+  }
+  
+  .container {
+    width: 90%;
+  }
+  
+  .hram {
+    width: 90%;
+  }
+  
+  .text {
+    font-size: 28px;
+  }
+  
+  .container2 {
+    padding: 80px 40px;
+  }
+  
+  .poshertvovie_card {
+    width: 380px;
   }
 }/*# sourceMappingURL=style.css.map */
